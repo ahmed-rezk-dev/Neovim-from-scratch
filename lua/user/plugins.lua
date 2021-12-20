@@ -50,7 +50,12 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
-	use("nvim-lualine/lualine.nvim")
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("user._lualine").setup()
+		end,
+	})
 	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
@@ -60,6 +65,14 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 	use({
 		"p00f/nvim-ts-rainbow",
+	})
+
+	-- sessions manager
+	use({
+		"rmagatti/auto-session",
+		config = function()
+			-- require("user._sessions").setup()
+		end,
 	})
 
 	-- Colorschemes
