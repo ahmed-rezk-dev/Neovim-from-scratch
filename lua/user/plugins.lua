@@ -79,6 +79,18 @@ return packer.startup(function(use)
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use("lunarvim/darkplus.nvim")
 
+-- Hop is an EasyMotion-like plugin allowing you to jump anywhere in a document with as few keystrokes as possible.
+use({
+  "phaazon/hop.nvim",
+  as = "hop",
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require("hop").setup()
+    vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
+    vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+  end,
+})
+
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
